@@ -49,8 +49,10 @@ namespace consoleAll
             Order newOrder = new Order();
             newOrder.OnCreated += Email.Send;
             newOrder.OnCreated += SMS.Send;
-            newOrder.Create();
+            //  newOrder.Create();
+            //event handling with argument passing
 
+            newOrder.Create("john@test.com", "(408)-111-2222");
 
         }
         static void HandleEvent(object sender, EventArgs e)
@@ -63,17 +65,17 @@ namespace consoleAll
 
     class Email
     {
-        public static void Send(object sender, EventArgs e)
+        public static void Send(object sender, OrderEventArgs e)
         {
-            Console.WriteLine($"Send an email");
+            Console.WriteLine($"Send an email{e.Email}");
         }
     }
 
     class SMS
     {
-        public static void Send(object sender, EventArgs e)
+        public static void Send(object sender, OrderEventArgs e)
         {
-            Console.WriteLine($"Send an SMS");
+            Console.WriteLine($"Send an SMS {e.Phone}");
         }
     }
 
