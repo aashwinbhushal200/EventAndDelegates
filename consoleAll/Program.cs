@@ -2,6 +2,8 @@
 
 namespace consoleAll
 {
+
+    //delegate and event handler examples
     internal class DelegateExample
     {
         delegate string delegate1(string s);
